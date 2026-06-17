@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idk why I Made This</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:rgb(100,149,237);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.card{
+    width:700px;
+    min-height:450px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    text-align:center;
+    padding:30px;
+    position:relative;
+}
+
+.flowers{
+    font-size:28px;
+    margin:15px 0;
+}
+
+h1{
+    margin-top:40px;
+    margin-bottom:50px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#yesBtn{
+    position:absolute;
+    background:#1e90ff;
+    color:white;
+}
+
+#noBtn{
+    background:#0066cc;
+    color:white;
+}
+
+.option{
+    background:#add8e6;
+    margin:15px;
+    min-width:140px;
+}
+
+#message{
+    margin-top:50px;
+    font-size:22px;
+    font-weight:bold;
+    color:#003399;
+}
+
+#screen2,
+#screen3{
+    display:none;
+}
+
+.final-message{
+    margin-top:40px;
+}
+
+.final-message h2{
+    margin:25px 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+    <!-- SCREEN 1 -->
+
+    <div id="screen1">
+
+        <div class="flowers">
+            🌸 🌷 🌹 🌺 🌻 🌼 🌸 🌷 🌹
+        </div>
+
+        <h1>Do you want to open this website?</h1>
+
+        <button id="yesBtn">Yes</button>
+
+        <button id="noBtn" onclick="showSecondScreen()">
+            No
+        </button>
+
+        <div class="flowers" style="margin-top:150px;">
+            🌸 🌷 🌹 🌺 🌻 🌼 🌸 🌷 🌹
+        </div>
+
+    </div>
+
+    <!-- SCREEN 2 -->
+
+    <div id="screen2">
+
+        <div class="flowers">
+            🌸 🌷 🌹 🌺 🌻 🌼 🌸 🌷 🌹
+        </div>
+
+        <h1>What do you call this person?</h1>
+
+        <button class="option" onclick="chooseGay()">gay</button>
+
+        <button class="option" onclick="chooseLanss()">lanss</button>
+
+        <br>
+
+        <button class="option" onclick="chooseGaurav()">Gaurav</button>
+
+        <button class="option" onclick="chooseKutta()">kutta</button>
+
+        <div id="message"></div>
+
+        <div class="flowers" style="margin-top:50px;">
+            🌸 🌷 🌹 🌺 🌻 🌼 🌸 🌷 🌹
+        </div>
+
+    </div>
+
+    <!-- SCREEN 3 -->
+
+    <div id="screen3">
+
+        <div class="flowers">
+            🌹 🌹
+        </div>
+
+        <div class="final-message">
+
+            <h2 style="font-size:32px;">
+                Trust krna chahiye apne upar, Haww
+            </h2>
+
+            <h2>
+                Mai to bakchodi kr rha tha.
+            </h2>
+
+            <h2>
+                Thank you for your patience
+            </h2>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let lanssClickedBefore = false;
+
+const yesBtn = document.getElementById("yesBtn");
+
+yesBtn.style.left = "220px";
+yesBtn.style.top = "190px";
+
+yesBtn.addEventListener("mouseenter", () => {
+
+    const card = document.querySelector(".card");
+
+    const maxX = card.clientWidth - 120;
+    const maxY = card.clientHeight - 80;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    yesBtn.style.left = x + "px";
+    yesBtn.style.top = y + "px";
+});
+
+function showSecondScreen(){
+
+    document.getElementById("screen1").style.display = "none";
+    document.getElementById("screen2").style.display = "block";
+}
+
+function chooseGay(){
+
+    document.getElementById("message").innerHTML =
+        "👉 I think you should choose lanss";
+}
+
+function chooseLanss(){
+
+    if(!lanssClickedBefore){
+
+        lanssClickedBefore = true;
+
+        document.getElementById("message").innerHTML =
+            "👉 Oops sorry, you should choose kutta";
+
+    }else{
+
+        showFinalScreen();
+    }
+}
+
+function chooseKutta(){
+
+    document.getElementById("message").innerHTML =
+        "👉 My bad my bad, you should choose Gaurav";
+}
+
+function chooseGaurav(){
+
+    document.getElementById("message").innerHTML =
+        "👉 This time I'm sure, choose lanss";
+}
+
+function showFinalScreen(){
+
+    document.getElementById("screen2").style.display = "none";
+    document.getElementById("screen3").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
